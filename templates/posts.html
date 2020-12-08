@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Posts</title>
+{% endblock %}
+
+
+
+{% block body %} 
+<br>
+<div>
+    <h1 style="display: inline;" >所有貼文</h1>
+    <a style="display: inline;" class="btn btn-success float-right" href="/posts/new" >+ 新貼文</a>
+</div>
+<hr>
+
+    {% for post in posts %}
+        <br>
+        <h2>{{ post.title }}</h2>
+
+        {% if post.author %}
+            <small>寫作者: {{ post.author }} 在 {{ moment(post.date_posted).fromTime(now) }}</small>
+            <small> {{ moment(post.date_posted).format('MMMM Do YYYY, h:mm:ss a') }}</small>
+        {% else %}
+        <small>寫作者: 不明 在 {{ moment(post.date_posted).format('MMMM Do YYYY, h:mm:ss a') }}</small>
+        {% endif %}
+        <br>
+        <br>
+        
+        <p style="white-space: pre-wrap;" >{{ post.content }}</p>
+        <a class="btn btn-danger" href='/posts/delete/{{post.id}}'>刪除</a>
+        <a class="btn btn-primary" href='/posts/edit/{{post.id}}'>編輯</a>
+        <br>
+        <hr>
+    {% endfor%}
+{% endblock %}

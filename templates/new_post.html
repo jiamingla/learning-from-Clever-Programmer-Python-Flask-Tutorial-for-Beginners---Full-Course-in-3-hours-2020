@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>New Posts</title>
+{% endblock %}
+
+
+{% block body %} 
+<br>
+<h1>新貼文</h1>
+
+    <hr>
+    <h2>新增部落格文章:</h2>
+    <form action='/posts' method='POST'>
+        <label for="title">標題:</label>
+        <input class="form-control" type="text" name="title" id="title" placeholder="輸入標題" aria-label="輸入標題">
+        <br>
+        <label for="author">作者:</label>
+        <input class="form-control" type="text" name="author" id="author" placeholder="輸入作者" aria-label="輸入作者">
+        <br>
+        <label for="content">內容:</label>
+        <textarea class="form-control" name="content" id="content" placeholder="說點什麼吧~" aria-label="輸入內容" rows="3"></textarea>
+        <br>
+        <br>
+        <input type="submit" value="發文發起來">
+    </form>
+    <hr>
+{% endblock %}

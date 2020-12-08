@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Edit Posts</title>
+{% endblock %}
+
+
+{% block body %} 
+<h1>編輯貼文</h1>
+
+    <hr>
+    <h2>編輯部落格文章:</h2>
+    <!--這個form action滿重要的，但我還看不懂---->
+    <form action='/posts/edit/{{post.id}}' method='POST'>
+        <label for="title">標題:</label>
+        <input class="form-control" type="text" name="title" id="title" value="{{ post.title }}" aria-label="輸入標題">
+        <br>
+        <label for="author">作者:</label>
+        <input class="form-control" type="text" name="author" id="author" value="{{ post.author }}" aria-label="輸入作者">
+        <br>
+        <label for="content">內容:</label>
+        <textarea class="form-control" name="content" id="content" aria-label="輸入內容" rows="3">{{ post.content }}</textarea>
+        <br>
+        <br>
+        <input type="submit" value="保存保起來">
+    </form>
+    <hr>
+{% endblock %}
